@@ -22,5 +22,5 @@ jobs:
       - name: Install dependencies
         run: composer install  --no-progress --no-suggest --prefer-dist     #Installe les dépendances
 
-      - name: Run PHPStan
-        run: composer run stan-check                     #Execute le script composer stan 
+      - name: Run tests
+        run: vendor/bin/phpstan                    #Execute le script composer stan 
