@@ -21,5 +21,5 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest    #Installe les dépendances Composer
 
-      - name: Run PHP CS Fixer
-        run: composer cs-check                         #Execute le script Composer "cs-check"
+      - name: Run tests
+        run: vendor/bin/php-cs-fixer                       #Execute le script Composer "cs-check"
