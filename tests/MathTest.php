@@ -20,8 +20,8 @@ class MathTest extends TestCase
 
     public function testSoustraction(): void
     {
-        $this->assertEquals(1, $this->math->substract(3, 2));
-        $this->assertEquals(-4, $this->math->substract(-2, 2));
+        $this->assertEquals(1, $this->math->subtract(3, 2));
+        $this->assertEquals(-4, $this->math->subtract(-2, 2));
     }
 
     public function testMultiplication(): void

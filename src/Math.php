@@ -1,29 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
-class Math 
+final class Math
 {
-    public static function add($a, $b)
+    public static function add(float|int $a, float|int $b): float
     {
-        return $a + $b;
+        return (float) ($a + $b);
     }
 
-    public static function substract($a, $b)
+    public static function subtract(float|int $a, float|int $b): float
     {
-        return $a - $b;
+        return (float) ($a - $b);
     }
 
-    public static function multiply($a, $b)
+    public static function multiply(float|int $a, float|int $b): float
     {
-        return $a * $b;
+        return (float) ($a * $b);
     }
 
-    public static function divide($a, $b)
+    public static function divide(float|int $a, float|int $b): float
     {
-        if($b == 0) {
-            throw new \InvalidArgumentException("Division by zero");
+        if ($b == 0.0) {
+            throw new \InvalidArgumentException('Division by zero');
         }
-        return $a / $b;
+        return (float) ($a / $b);
     }
 }

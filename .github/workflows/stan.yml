@@ -1,0 +1,26 @@
+## Test PHPStan analysis in GitHub Actions
+name: PHPStan Analysis                                    #Nom du workflow
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2                        #Clone le dépôt
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2                  #Installe php
+        with:
+          php-version: '8.3'
+          extensions: mbstring                           #Installe l'extension mbstring
+
+      - name: Install dependencies
+        run: composer install  --no-progress --no-suggest --prefer-dist     #Installe les dépendances
+
+      - name: Run PHPStan
+        run: composer run stan-check                     #Execute le script composer stan 

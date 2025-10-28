@@ -1,0 +1,27 @@
+## Tests for PHP code using PHPUnit
+
+name: PHP CI                                            #Nom du worflow
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest                              #VM Github
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2                       #Clone le dépôt dans le runner
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2                 #Installe php sur le runner 
+        with:
+          php-version: '8.3'                            #Version de php
+      
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest      #Installe les dépendances Composer
+
+      - name: Run tests
+        run: vendor/bin/phpunit                         #Lance PHPUnit via binaire local 

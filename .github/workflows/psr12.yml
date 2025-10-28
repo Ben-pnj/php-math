@@ -1,0 +1,25 @@
+## Test PHP code style with PHP CS Fixer
+name: PHP CS Fixer                                    #Nom du workflow
+on:                                                   #Evenement déclencheur
+  push:                                               #Se lance sur push ...
+    branches: [ main ]                                #... sur la branche main
+  pull_request:                                       #... et sur le pull request
+    branches: [ main ]
+
+jobs:
+  fix:                                                #Nom du job
+    runs-on: ubuntu-latest                            #VM Github
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2                     #Clone le dépôt dans le runner
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2               #Installe php sur le runner
+        with:
+          php-version: '8.3'                          #Version de php                        
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest    #Installe les dépendances Composer
+
+      - name: Run PHP CS Fixer
+        run: composer cs-check                         #Execute le script Composer "cs-check"
